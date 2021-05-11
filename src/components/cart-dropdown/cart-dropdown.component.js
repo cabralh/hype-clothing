@@ -17,21 +17,20 @@ const CartDropdown = ({ cartItems, history, dispatch }) => (
                 cartItems.map(cartItem => (
                     <CartItem key={cartItem.id} item={cartItem} />
                 ))
-            ) : (
+            )   :   (
                 <span className='empty-message'>Your cart is empty</span>
             )}
         </div>
         <CustomButton onClick={() => {
-            history.push('/checkout');
+            history.push('/checkout')
             dispatch(toggleCartHidden());
         }}>
-            GO TO CHECKOUT
-        </CustomButton>
+            GO TO CHECKOUT</CustomButton>
     </div>
-)
+);
 
 const mapStateToProps = createStructuredSelector({
     cartItems: selectCartItems
 });
 
-export default withRouter(connect(null, mapStateToProps)(CartDropdown));
+export default withRouter(connect(mapStateToProps)(CartDropdown));
